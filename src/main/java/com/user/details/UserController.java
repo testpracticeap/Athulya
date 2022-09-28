@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-	@RequestMapping("/sample/")
-	public User Sample(@RequestParam(value = "name", defaultValue = "Robot") String name) {
+	@RequestMapping("/reqParam/")
+	public User Param(@RequestParam(value = "name", defaultValue = "Athulya") String name) {
 		User user = new User();
 		user.setId(1);
-		user.setName("hi " + name);
-		// user.setEmail(name)
+		user.setName(name);
 		return user;
 	}
 
@@ -29,16 +28,11 @@ public class UserController {
 	@PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User addUser(@RequestBody User user) {
 		UserDAO userdao = new UserDAO();
-
 		Integer id = userdao.getAllUsers().getUserList().size() + 1;
-
 		user.setId(id);
-
 		userdao.addUser(user);
-
 		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
 			//	.toUri();
-
 		//return ResponseEntity.created(location).build();
 		return user;
 	}
