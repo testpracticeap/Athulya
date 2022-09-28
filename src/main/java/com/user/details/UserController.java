@@ -1,16 +1,12 @@
 package com.user.details;
 
-import java.net.URI;
-
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class UserController {
@@ -31,7 +27,7 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> addUser(@RequestBody User user) {
+	public User addUser(@RequestBody User user) {
 		UserDAO userdao = new UserDAO();
 
 		Integer id = userdao.getAllUsers().getUserList().size() + 1;
@@ -40,9 +36,11 @@ public class UserController {
 
 		userdao.addUser(user);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
-				.toUri();
+		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
+			//	.toUri();
 
-		return ResponseEntity.created(location).build();
+		//return ResponseEntity.created(location).build();
+		return user;
 	}
+
 }
