@@ -52,4 +52,5 @@ public class UserController {
 
 class ResourceNotFoundException extends Exception {
  // just to throw exception
+	
 }
