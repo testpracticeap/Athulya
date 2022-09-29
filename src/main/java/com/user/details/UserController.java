@@ -33,18 +33,13 @@ public class UserController {
 		Integer id = userdao.getAllUsers().getUserList().size() + 1;
 		user.setId(id);
 		userdao.addUser(user);
-		//URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
-			//	.toUri();
-		//return ResponseEntity.created(location).build();
 		return user;
 	}
 	@PutMapping("/users/{id}")
 	public User updateUser(@PathVariable(value = "id") int id,@RequestBody User user) throws ResourceNotFoundException{
 
 				User user1 = UserDAO.findById(id);
-				 //.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
-			
-
+				
 	     user1.setName(user.getName());
 	     user1.setAddress(user.getAddress());
 	     user1.setEmail(user.getEmail());
