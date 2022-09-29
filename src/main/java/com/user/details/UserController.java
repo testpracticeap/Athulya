@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class UserController {
 	@RequestMapping("/reqParam/")
@@ -35,18 +36,20 @@ public class UserController {
 		userdao.addUser(user);
 		return user;
 	}
-	@PutMapping("/users/{id}")
-	public User updateUser(@PathVariable(value = "id") int id,@RequestBody User user) throws ResourceNotFoundException{
 
-				User user1 = UserDAO.findById(id);
-				
-	     user1.setName(user.getName());
-	     user1.setAddress(user.getAddress());
-	     user1.setEmail(user.getEmail());
-	     return user1;
+	@PutMapping("/users/{id}")
+	public User updateUser(@PathVariable(value = "id") int id, @RequestBody User user)
+			throws ResourceNotFoundException {
+
+		User user1 = UserDAO.findById(id);
+		user1.setName(user.getName());
+		user1.setAddress(user.getAddress());
+		user1.setEmail(user.getEmail());
+		return user1;
 	}
 
 }
-class ResourceNotFoundException extends Exception{
-	
+
+class ResourceNotFoundException extends Exception {
+ // just to throw exception
 }
