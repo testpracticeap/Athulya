@@ -2,7 +2,9 @@ package com.user.details;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,5 +38,20 @@ public class UserController {
 		//return ResponseEntity.created(location).build();
 		return user;
 	}
+	@PutMapping("/users/{id}")
+	public User updateUser(@PathVariable(value = "id") int id,@RequestBody User user) throws ResourceNotFoundException{
 
+				User user1 = UserDAO.findById(id);
+				 //.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + employeeId));
+			
+
+	     user1.setName(user.getName());
+	     user1.setAddress(user.getAddress());
+	     user1.setEmail(user.getEmail());
+	     return user1;
+	}
+
+}
+class ResourceNotFoundException extends Exception{
+	
 }
