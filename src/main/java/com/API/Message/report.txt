@@ -1,0 +1,27 @@
+POST METHOD
+-------------
+url used: http://localhost:8080/
+request body:  
+{
+    "projectName": "aaaa",
+    "projectAuthor":"bbbb",
+    "projectDescription":"ccc"
+}
+
+Response: Data Recorded
+
+
+GET METHOD
+------------
+url used: http://localhost:8080/
+
+request body: NIL
+
+response:
+[
+    {
+        "projectName": "aaaa",
+        "projectAuthor": "bbbb",
+        "projectDescription": "ccc"
+    }
+]
