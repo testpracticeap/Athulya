@@ -21,8 +21,8 @@ public class UserList {
 
 	}
 
-	public void setUserList(List<User> userList) {
-		this.userList = userList;
-	}
+//	public void setUserList(List<User> userList) {
+//		this.userList = userList;
+//	}
 
 }

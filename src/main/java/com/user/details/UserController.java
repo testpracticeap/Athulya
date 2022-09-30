@@ -1,6 +1,7 @@
 package com.user.details;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,12 @@ public class UserController {
 		user1.setAddress(user.getAddress());
 		user1.setEmail(user.getEmail());
 		return user1;
+	}
+	
+	@DeleteMapping("/users/{id}")
+	public User deleteUser(@PathVariable(value="id")int id) {
+		User user=UserDAO.deleteUser(id);
+		return user;
 	}
 
 }
