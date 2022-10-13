@@ -29,6 +29,7 @@ public class AppTest {
 	////////////////////////////// GET //////////////////////////////
 	
 	
+	
 	@Test
 	public void getData() {
 //		RestAssured.baseURI = "https://reqres.in/api/users?page=2";
