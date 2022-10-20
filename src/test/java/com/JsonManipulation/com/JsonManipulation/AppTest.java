@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 
 public class AppTest {
 
-	 //@Test
+	 @Test
 	public void getAll() {
 		Response response = RestAssured.given().baseUri("https://reqres.in/api/users?page=1").when().get("");
 		Object allVals = com.jayway.jsonpath.JsonPath.read(response.asString(), "$.*");
@@ -19,7 +19,7 @@ public class AppTest {
 
 	}
 
-	// @Test
+	@Test
 	public void getEmailsWithConditions() {
 		Response response = RestAssured.given().baseUri("https://reqres.in/api/users?page=1").when().get("");
 		Object email = com.jayway.jsonpath.JsonPath.read(response.asString(), "$.data[?(@.id == 1)].email");
@@ -30,7 +30,7 @@ public class AppTest {
 		System.out.println(emailsGr.toString());
 
 	}
-	//@Test
+	@Test
 	public void getLastRecord() {
 		Response response = RestAssured.given().baseUri("https://reqres.in/api/users?page=1").when().get("");
 		Object last = com.jayway.jsonpath.JsonPath.read(response.asString(), "$..data[-1]");
